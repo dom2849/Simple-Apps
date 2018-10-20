@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Changing Button Color</string>
+    <string name="click_me">Click me!!</string>
+
+    <string name="orange_btn">I\'m an orange button!</string>
+    <string name="blue_btn">I\'m a blue button!</string>
+    <string name="green_btn">I\'m a green button!</string>
+
+</resources>
