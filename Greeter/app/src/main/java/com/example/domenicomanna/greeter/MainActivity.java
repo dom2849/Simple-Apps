@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     private Button greet;
     private Button clear;
     private EditText editText;
+    private String NAME_KEY = "name";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,12 +21,27 @@ public class MainActivity extends AppCompatActivity {
         clear = findViewById(R.id.btn_clear);
         greet = findViewById(R.id.btn_greet);
         editText = findViewById(R.id.edit_text_name);
+        configureClickListeners();
+
+        if (savedInstanceState != null){
+            String nameToDisplay = savedInstanceState.getString(NAME_KEY);
+            setNameTo(nameToDisplay);
+        }
+
+    }
+
+    /**
+     * Sets the click listeners for the greet and clear
+     * buttons
+     */
+    private void configureClickListeners() {
         clear.setOnClickListener((View v) ->
-            setNameTo(""));
+                setNameTo(""));
         greet.setOnClickListener((View v) -> {
             displayToast(getNameFromEditText());
         });
     }
+
     /**
      *
      * @param name the name to display in the edit text
@@ -54,6 +70,12 @@ public class MainActivity extends AppCompatActivity {
         else {
             message = "Hello " + nameFromEditText + "!!!";
         }
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState){
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putString(NAME_KEY, getNameFromEditText());
     }
 }
