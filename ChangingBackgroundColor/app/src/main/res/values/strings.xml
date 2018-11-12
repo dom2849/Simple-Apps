@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Changing Background Color</string>
     <string name="change_color">Change background color</string>
+    <string name="submit_changes">Submit changes</string>
+    <string name="select_color_prompt">Select which color to change the background to</string>
+    <string name="blue">Blue</string>
+    <string name="red">Red</string>
+    <string name="green">Green</string>
+
 </resources>
