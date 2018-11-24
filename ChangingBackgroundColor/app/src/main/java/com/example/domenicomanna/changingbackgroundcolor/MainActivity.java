@@ -1,5 +1,6 @@
 package com.example.domenicomanna.changingbackgroundcolor;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,11 +12,13 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private static final String CURRENT_COLOR_KEY = "Current Color";
-    private int DEFAULT_COLOR = R.color.colorBlue;
+    private static final int REQUEST_CODE_CHANGE_COLOR = 10;
+    private int DEFAULT_COLOR = R.color.colorGreen;
 
     private LinearLayoutCompat linearLayout;
-    private Button changeColor;
+    private Button btnChangeColor;
     private int currentBackgroundColor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
             currentBackgroundColor = savedInstanceState.getInt(CURRENT_COLOR_KEY, DEFAULT_COLOR);
         }
         linearLayout = findViewById(R.id.linear_layout_compat_main);
-        changeColor = findViewById(R.id.btn_main_change_color);
-        changeColor.setOnClickListener((View v)-> switchToChangeColorActivity());
+        btnChangeColor = findViewById(R.id.btn_main_change_color);
+        btnChangeColor.setOnClickListener((View v)-> switchToChangeColorActivity());
         changeBackGroundColor(currentBackgroundColor);
 
     }
@@ -37,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void switchToChangeColorActivity() {
         Intent intent = ChangeColor.getIntentToSwitchActivity(this, currentBackgroundColor);
-        startActivity(intent);
+        startActivityForResult(intent, REQUEST_CODE_CHANGE_COLOR);
     }
 
     /**
@@ -55,5 +58,19 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(bundle);
         Log.d(TAG, "onSaveInstanceState: Saving data");
         bundle.putInt(CURRENT_COLOR_KEY, currentBackgroundColor);
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+        Log.d(TAG, "onActivityResult: Called");
+        if (resultCode != Activity.RESULT_OK){
+            return;
+        }
+
+        if (requestCode == REQUEST_CODE_CHANGE_COLOR){
+            if (data == null) return;
+            currentBackgroundColor = ChangeColor.getCurrentColor(data);
+            changeBackGroundColor(currentBackgroundColor);
+        }
+
     }
 }
