@@ -107,7 +107,7 @@ public class ChangeColor extends AppCompatActivity {
      *                         called from the parent activity
      * @return the integer value of the color to change the background to
      */
-    public static int getCurrentColor(Intent colorInformation){
+    public static int getUpdatedColor(Intent colorInformation){
         return colorInformation.getIntExtra(CURRENT_COLOR_KEY, DEFAULT_COLOR);
     }
 }

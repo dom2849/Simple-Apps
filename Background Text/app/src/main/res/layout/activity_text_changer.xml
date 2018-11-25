@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TextChanger">
+
+
+    <EditText
+        android:id="@+id/edit_text_updated_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:padding="@dimen/padding"
+        android:hint="@string/edit_text_hint"/>
+
+    <Button
+        android:id="@+id/btn_replace_text_activity_text_changer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/replace_text"/>
+
+    <TextView
+        android:id="@+id/text_view_directions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_replace_text_activity_text_changer"
+        android:layout_centerHorizontal="true"
+        android:padding="@dimen/padding"
+        android:visibility="invisible"
+        android:text="@string/hit_back_button"/>
+
+</android.widget.RelativeLayout>

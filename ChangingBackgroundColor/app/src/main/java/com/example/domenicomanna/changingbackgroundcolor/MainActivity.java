@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (requestCode == REQUEST_CODE_CHANGE_COLOR){
             if (data == null) return;
-            currentBackgroundColor = ChangeColor.getCurrentColor(data);
+            currentBackgroundColor = ChangeColor.getUpdatedColor(data);
             changeBackGroundColor(currentBackgroundColor);
         }
 

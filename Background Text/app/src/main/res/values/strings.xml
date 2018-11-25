@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Background Text</string>
+    <string name="change_text">Change background text</string>
+    <string name="replace_text">Replace background text</string>
+
+    <string name="edit_text_hint">Enter the text you\'d like to see in the background</string>
+    <string name="hit_back_button">Please hit the back button to see the updated text</string>
+</resources>
